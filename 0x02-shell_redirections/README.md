@@ -14,7 +14,7 @@ All of the following files are scripts:
 | `4-lastlines` | Displays the last 10 lines of `/etc/passwd` |
 | `5-firstlines` | Displays the first 10 lines of `/etc/passwd` |
 | `6-third_line` | Displays the third line of the file `iacta` |
-| `7-file` | Creates a file named exactly `\*\\'"Holberton School"\'\\*$\?\*\*\*\*\*:)` containing the test `Holberton School` ending by a new line |
+| `7-file` | Creates a file named exactly `\*\\'"BEST School"\'\\*$\?\*\*\*\*\*:)` containing the test `BEST School` ending by a new line |
 | `8-cwd_state` | Writes into the file `ls_cwd_content` the result of the command `ls -la`. |
 | `9-duplicate_last_line` | Duplicates the last line of the file `iacta` |
 | `10-no_more_js` | Deletes all the regular files with a `.js` extension that are present in the current directory and all its subfolders |
