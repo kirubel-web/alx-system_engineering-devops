@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Web servers are the piece of software generating and
+# Serving HTML pages, let’s install one!
+#	Listens on port 80.
+#	Returns a page containing "Hello World!" when queried
+#	at the root with a curl GET request.
+
+sudo apt-get update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+
+sudo chown -R "$USER":"$USER" /var/www/html
+sudo chown -R "$USER":"$USER" /etc/nginx/sites-available/default
+
+touch /var/www/html/index.html
+echo 'Hello World!' > /var/www/html/index.html
+
+echo "server {
+     listen      80 default_server;
+     listen      [::]:80 default_server;
+     root        /var/www/html;
+     index       index.html index.htm;
+}" > /etc/nginx/sites-available/default
+
+sudo service nginx start
