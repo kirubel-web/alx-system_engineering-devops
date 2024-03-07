@@ -1,0 +1,32 @@
+global
+   log 127.0.0.1 local0 notice
+   maxconn 2000
+   user haproxy
+   group haproxy
+
+defaults
+   log   global
+   mode  http
+   option  httplog
+   option  dontlognull
+   retries 3
+   option redispatch
+   timeout connect  5000
+   timeout client  10000
+   timeout server  10000
+
+frontend www-http
+   bind   0.0.0.0:80
+   http-request set-header X-Forwarded-Proto http
+   default_backend www-backend
+
+frontend www-https
+    bind   0.0.0.0:443 ssl crt /etc/haproxy/certs/get-daniel.tech.pem
+    http-request set-header X-Forwarded-Proto https
+    redirect scheme https code 301 if !{ ssl_fc }
+    default_backend www-backend
+
+backend www-backend
+    balance  roundrobin
+    server 14832-web-01 3.233.242.33:80 check
+    server 14832-web-02 3.237.15.38:80 check
