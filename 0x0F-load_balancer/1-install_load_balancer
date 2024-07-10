@@ -38,8 +38,8 @@ frontend www-https
 
 backend www-backend
     balance  roundrobin
-    server 14832-web-01 3.233.242.33:80 check
-    server 14832-web-02 3.237.15.38:80 check
+    server 114146-web-01 100.25.13.79:80 check
+    server 114146-web-02 54.198.52.7:80 check
 " | sudo tee /etc/haproxy/haproxy.cfg
 
 sudo service haproxy restart
